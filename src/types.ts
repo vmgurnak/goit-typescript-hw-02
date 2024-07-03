@@ -37,6 +37,6 @@ export interface SearchBarProps {
 }
 
 export interface dataByQuery {
-  results: [];
+  results: ImagesArray[];
   total_pages: number;
 }

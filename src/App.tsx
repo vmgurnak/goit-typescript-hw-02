@@ -46,6 +46,7 @@ const App = () => {
           perPage
         );
         console.log(data);
+        console.log(data.results);
         if (data.results.length === 0) {
           toast(
             'Sorry, there are no images matching your search query. Please try again.'
