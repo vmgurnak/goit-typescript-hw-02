@@ -2,11 +2,11 @@
 
 import axios from 'axios';
 
-const requestImageByQuery = async (
+const requestImageByQuery = async <T>(
   query: string,
   currentPage: number,
   perPage: number
-) => {
+): Promise<T> => {
   const API_KEY = 'wA65yMsuVtaGEz26VTfXV2EuMFpmBDIORhh0BZRN2ls';
   const BASE_URL = 'https://api.unsplash.com/search/photos';
   const config = {
@@ -18,7 +18,7 @@ const requestImageByQuery = async (
     },
   };
 
-  const { data } = await axios.get(`${BASE_URL}`, config);
+  const { data }: { data: T } = await axios.get(`${BASE_URL}`, config);
   return data;
 };
 

@@ -14,13 +14,13 @@ import Loader from './components/Loader/Loader';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
-import { ImagesArray } from './types';
+import { ImagesArray, dataByQuery } from './types';
 
 const App = () => {
   // states
   const [images, setImages] = useState<ImagesArray[] | []>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [isLoadMoreBtn, setIsLoadMoreBtn] = useState<boolean>(false);
+  const [isLoadMoreBtn, setIsLoadMoreBtn] = useState<boolean | 0>(false);
   const [isImages, setIsImages] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -35,17 +35,17 @@ const App = () => {
     if (searchQuery === '') {
       return;
     }
-
-    async function dataByQuery() {
+    async function dataByQuery(): Promise<dataByQuery | undefined> {
       try {
         setIsError(false);
         setIsLoading(true);
         setIsLoadMoreBtn(false);
-        const data = await requestImageByQuery(
+        const data: dataByQuery = await requestImageByQuery(
           searchQuery,
           currentPage,
           perPage
         );
+        console.log(data);
         if (data.results.length === 0) {
           toast(
             'Sorry, there are no images matching your search query. Please try again.'

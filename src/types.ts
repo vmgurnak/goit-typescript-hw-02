@@ -35,3 +35,8 @@ export interface LoadMoreBtnProps {
 export interface SearchBarProps {
   onSetSearchQuery: (query: string) => void;
 }
+
+export interface dataByQuery {
+  results: [];
+  total_pages: number;
+}
