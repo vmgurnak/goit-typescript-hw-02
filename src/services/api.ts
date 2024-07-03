@@ -2,7 +2,11 @@
 
 import axios from 'axios';
 
-const requestImageByQuery = async (query, currentPage, perPage) => {
+const requestImageByQuery = async (
+  query: string,
+  currentPage: number,
+  perPage: number
+) => {
   const API_KEY = 'wA65yMsuVtaGEz26VTfXV2EuMFpmBDIORhh0BZRN2ls';
   const BASE_URL = 'https://api.unsplash.com/search/photos';
   const config = {

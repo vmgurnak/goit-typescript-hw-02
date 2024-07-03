@@ -1,14 +1,10 @@
+import { FC } from 'react';
 import css from './LoadMoreBtn.module.css';
+import { LoadMoreBtnProps } from '../../types';
 
-const LoadMoreBtn = ({ onSetPage }) => {
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ onSetPage }): JSX.Element => {
   const handleClick = () => {
     onSetPage();
-    // window.scrollBy page scroll
-    window.scrollBy({
-      top: 600,
-      left: 0,
-      behavior: 'smooth',
-    });
   };
 
   return (

@@ -1,7 +1,15 @@
+import { FC } from 'react';
 import css from './ImageCard.module.css';
+import { ImageCardProps } from '../../types';
 
-const ImageCard = ({ small, regular, alt, openModal, modalData }) => {
-  const handleClick = () => {
+const ImageCard: FC<ImageCardProps> = ({
+  small,
+  regular,
+  alt,
+  openModal,
+  modalData,
+}): JSX.Element => {
+  const handleClick = (): void => {
     openModal();
     modalData(regular, alt);
   };

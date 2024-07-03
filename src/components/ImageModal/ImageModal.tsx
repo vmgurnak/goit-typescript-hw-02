@@ -1,9 +1,17 @@
+import { FC } from 'react';
+
 // import library React Modal
 import Modal from 'react-modal';
 
 import css from './ImageModal.module.css';
+import { ImageModalProps } from '../../types';
 
-const ImageModal = ({ modalIsOpen, closeModal, modalImg, alt }) => {
+const ImageModal: FC<ImageModalProps> = ({
+  modalIsOpen,
+  closeModal,
+  modalImg,
+  alt,
+}): JSX.Element => {
   const customStyles = {
     overlay: {
       zIndex: '1',

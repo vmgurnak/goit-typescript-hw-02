@@ -14,11 +14,12 @@ import Loader from './components/Loader/Loader';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
+import { ImagesArray } from './types';
 
 const App = () => {
   // states
-  const [images, setImages] = useState<object[] | []>([]);
-  const [searchQuery, setSearchQuery] = useState<string | null>(null);
+  const [images, setImages] = useState<ImagesArray[] | []>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [isLoadMoreBtn, setIsLoadMoreBtn] = useState<boolean>(false);
   const [isImages, setIsImages] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,10 +29,10 @@ const App = () => {
   const [modalImg, setModalImg] = useState<string>('');
   const [modalAlt, setModalAlt] = useState<string>('');
 
-  let perPage = 20;
+  const perPage: number = 20;
 
   useEffect(() => {
-    if (searchQuery === null) {
+    if (searchQuery === '') {
       return;
     }
 
@@ -73,17 +74,17 @@ const App = () => {
     dataByQuery();
   }, [searchQuery, currentPage, perPage]);
 
-  useEffect(() => {
-    // window.scrollBy page scroll
-    window.scrollBy({
-      top: 300,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }, [currentPage]);
+  // useEffect(() => {
+  //   // window.scrollBy page scroll
+  //   window.scrollBy({
+  //     top: 300,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   });
+  // }, [currentPage]);
 
   // callback function for SearchQuery
-  const onSetSearchQuery = query => {
+  const onSetSearchQuery = (query: string): void => {
     if (query === searchQuery) {
       return;
     }
@@ -93,22 +94,22 @@ const App = () => {
   };
 
   // callback function for SetPage
-  const onSetPage = () => {
+  const onSetPage = (): void => {
     setCurrentPage(prevState => prevState + 1);
   };
 
   // callback function for openModal
-  const openModal = () => {
+  const openModal = (): void => {
     setModalIsOpen(true);
   };
 
-  const modalData = (img, alt) => {
+  const modalData = (img: string, alt: string): void => {
     setModalImg(img);
     setModalAlt(alt);
   };
 
   // callback function for closeModal
-  const closeModal = () => {
+  const closeModal = (): void => {
     setModalIsOpen(false);
   };
 

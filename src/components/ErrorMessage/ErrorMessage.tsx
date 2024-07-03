@@ -1,6 +1,6 @@
 import css from './ErrorMessage.module.css';
 
-const ErrorMessage = () => {
+const ErrorMessage = (): JSX.Element => {
   return (
     <div>
       <p className={css.errorMessageText}>
